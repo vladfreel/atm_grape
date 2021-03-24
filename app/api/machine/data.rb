@@ -13,7 +13,7 @@ module Machine
           optional :fifty, allow_blank: true, type: Integer
         end
       end
-      post do
+      put do
         Atm.first.load(params[:amount])
       end
 
@@ -24,8 +24,8 @@ module Machine
       params do
         requires :amount, type: Integer
       end
-      post do
-        Atm.find(params[:id]).withdrawal(params[:amount])
+      put do
+        Atm.first.withdrawal(params[:amount])
       end
 
     end
